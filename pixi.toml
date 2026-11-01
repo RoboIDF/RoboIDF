@@ -19,3 +19,8 @@ info = "python -c \"from pathlib import Path; print(Path('README.md').read_text(
 cmd = "python scripts/build_paper.py"
 [tasks.paper-check]
 cmd = "python scripts/check_paper.py"
+
+[tasks.demo]
+cmd = "python -m roboidf"
+[tasks.test]
+cmd = "python -m unittest discover -s tests -v"

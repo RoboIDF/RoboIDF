@@ -20,3 +20,9 @@ dist/
 *.out
 *.toc
 *.synctex.gz
+
+artifacts/
+__pycache__/
+*.egg-info/
+build/
+dist/
