@@ -1,0 +1,519 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  chinese,
+  11pt,
+  a4paper,
+  fontset=fandol]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=23mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\},fontsize=\small}
+\emergencystretch=3em
+\AtBeginDocument{\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=black}}
+
+\AtBeginEnvironment{longtable}{\small}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={RoboIDF：面向机器人系统辨识的可审计智能体工作流与执行合同},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{RoboIDF：面向机器人系统辨识的可审计智能体工作流与执行合同}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{English title:} RoboIDF: An Auditable Agent Harness and
+Execution Contract for Robot System Identification
+
+版本：v0.1，2026-11-01。文稿类型：设计与实验协议初稿（design/protocol
+paper）。作者、单位、投稿 venue 待确定。本文不报告已实现系统或实验结果。
+
+\section{摘要}\label{ux6458ux8981}
+
+机器人系统辨识需要协调设备语义、激励设计、数据质量、参数估计、执行约束与独立验证。对缺少动力学经验的开发者而言，调用优化器只是其中一个步骤；控制接口中的位置命令、内部电流和实际关节力矩可能具有不同含义，时间对齐误差可能被误解释为物理时延，而一次良好的轨迹拟合也不必然支持物理参数恢复。本文提出
+RoboIDF
+的设计与验证协议：通过类型化工具、持久运行状态、独立安全执行通道、辨识后端合同及产物来源记录，组织机器人检查、实验规划、受控采集、估计、诊断和独立交付。设计将机器人硬件访问与辨识任务知识分离，将智能体建议与运动授权分离，并将参数声明划分为物理参数可辨识、仅等效、不可辨识和仅先验四类。本文进一步给出面向合成任务、故障注入和真实离线数据的评测方案，以及对主动实验、状态恢复和语义合同的消融设计。截至本文版本，仓库仅具备项目规划文档和
+Pixi
+基础环境，所有业务模块、后端适配和实验仍待实现。贡献因此是可供审查和后续检验的系统设计、合同草案与研究协议，而非性能优越性结论。
+
+\textbf{关键词：}
+机器人系统辨识；智能体工作流；可辨识性；安全执行；可复现评测；数字孪生
+
+\section{Abstract}\label{abstract}
+
+Robot system identification requires coordinated decisions about
+hardware semantics, excitation, data quality, parameter estimation, and
+independent validation. We propose the design of RoboIDF, an agent
+harness that connects typed tools, persistent run state, an independent
+execution channel, identification backends, and traceable artifacts. The
+protocol separates hardware adaptation from identification knowledge,
+agent proposals from motion authorization, and physical parameter claims
+from effective closed-loop fits. We specify state transitions, failure
+handling, and an evaluation protocol covering synthetic tasks, injected
+faults, and offline robot data. This manuscript is a design and protocol
+draft: the repository currently contains planning documents and a Pixi
+environment, with no implemented harness, backend integration, or
+experimental results. All empirical claims remain hypotheses to be
+tested.
+
+\section{1. 引言}\label{ux5f15ux8a00}
+
+机器人模型既服务于控制与诊断，也服务于仿真中的策略评估。实际部署中，模型误差可能来自惯性、摩擦、执行器特性、传感器偏置、控制器行为、装配标定和采样链路。开发者往往希望从少量实验获得一个可用模型，但首先必须回答``设备能观测什么''和``这些观测能够支持什么结论''。如果仅暴露位置闭环接口，那么从输入位置与输出位置拟合得到的响应可能同时包含内部控制器和机械系统效应；把这些响应参数直接称为关节惯量或物理阻尼会超过证据边界。
+
+语言模型驱动的智能体能够组织工具调用和解释诊断，但这并不自动赋予其实验判断的可靠性。RoboIDF
+关注的核心问题是：如何把具有不确定性的智能体放入一个可恢复、可审计且能诚实表达辨识边界的工作流，使其负责提出和解释决策，而由显式合同约束执行与结论。研究对象是工作流层的组织机制，成熟求解器仍作为外部后端使用。
+
+本文提出三项待验证的设计贡献。第一，将机器人描述、硬件能力、辨识 Profile
+与安全 Profile 分离，使同一硬件能够支持多个任务，而不要求 Adapter
+作者替代实验专家。第二，以运行状态和事件记录串联候选实验、授权、数据、参数补丁及验证报告，明确重试和恢复的语义。第三，通过参数声明等级和封存测试集规则，使``工作流完成''与``模型有效''成为不同判定。我们不声称这些原则首次出现，也不声称组合后的系统已经优于已有方法；新颖性与效果仍须通过实现、对照和更完整的文献评审确认。
+
+\section{2.
+相关工作与设计位置}\label{ux76f8ux5173ux5de5ux4f5cux4e0eux8bbeux8ba1ux4f4dux7f6e}
+
+\textbf{推理与工具行动。} ReAct 研究了语言模型中推理与行动交替的组织方式
+(Yao 等
+2022年)。本文借鉴这种任务分解视角，但不把语言推理轨迹视为物理执行的授权凭据。RoboIDF
+拟保存可审查的行动摘要、工具输入输出和决策依据；不要求采集模型内部私有推理内容。交互任务上的研究结果也不能直接外推为真机系统辨识的安全性或参数准确性。
+
+\textbf{仿真与辨识后端。} MuJoCo 官方 System Identification Toolbox
+描述了利用模型与记录数据优化参数的流程，默认目标涉及带边界的非线性最小二乘，并允许参数影响物理模型或测量残差
+(Google DeepMind, MuJoCo project,
+不详)。这为后端复用提供具体候选，但不能证明本项目已经完成适配。本文将后端的参数化、求解终止、残差及不确定性输出保留在合同内，避免用统一接口掩盖求解器差异。MuJoCo
+文档将 MJCF 定义为描述动力学系统的模型格式 (MuJoCo project,
+不详)；文件可编译或可加载只是交付检查的一部分，动态预测仍须在留出轨迹上验证。
+
+\textbf{硬件组件化。} ros2\_control 文档将硬件抽象为 Actuator、Sensor 和
+System，并提供硬件生命周期及错误处理相关文档 ({ros-controls project},
+不详)。RoboIDF
+拟在设备适配层借鉴这种职责分离，但额外记录辨识相关语义，例如控制模式、反馈量的物理含义、时钟域和校准版本。本文不提出替代实时控制框架，也不认为统一读写接口可以消除设备差异。
+
+上述资料分别支持智能体交互、数值后端和硬件抽象的背景，不能作为 RoboIDF
+有效性的证据。当前参考集合有意限制为已核对的一手资料，尚不足以支持全面的系统辨识文献综述。正式投稿前需补充经典辨识、机器人动力学辨识、最优实验设计及物理一致参数化的原始论文，并逐条核实适用条件。
+
+\section{3.
+问题定义与证据边界}\label{ux95eeux9898ux5b9aux4e49ux4e0eux8bc1ux636eux8fb9ux754c}
+
+考虑离散时间机器人及测量链路：
+
+\[x_{t+1}=f(x_t,u_t;\theta,c)+w_t,\qquad
+y_t=h(x_t;\theta,\phi)+v_t.\]
+
+其中 \(x_t\) 为状态，\(u_t\) 为实际可访问的控制输入，\(\theta\)
+为目标模型参数，\(c\) 表示控制模式及可能未知的内部控制器，\(\phi\)
+表示测量偏置、时间对齐等测量链路参数。数据包应同时记录设备原始时间戳和主机接收时间戳；没有同步证据时，不把二者置于同一时钟域。该表达是问题抽象，并不假定所有后端都实现相同状态模型。
+
+输入任务为 \(T=(R,P,S,D_0,B,V)\)：机器人描述 \(R\)、辨识 Profile
+\(P\)、安全合同 \(S\)、已有数据 \(D_0\)、资源预算 \(B\)、验证协议
+\(V\)。目标是在合同允许的实验集合中，输出候选模型、证据包及结论等级，或者给出明确的不可完成原因。预算包含实验次数、设备占用时间、计算成本、智能体调用成本和人工干预；这些维度分别报告，不能用单一总分隐藏额外人工劳动。
+
+对后端适用的任务，可采用以下拟合目标作为接口示例：
+
+\[\hat\theta,\hat\phi=\arg\min_{\theta\in\Theta,\phi\in\Phi}
+\sum_{e\in D_{\rm fit}}\sum_t
+\rho\left(W_e[y_{e,t}-\hat y_{e,t}(\theta,\phi)]\right)
++\lambda\Omega(\theta).\]
+
+权重、鲁棒损失、正则项和参数边界必须进入配置及报告。拟合指标下降不构成可辨识性证明。合同拟将参数级结论定义为：\texttt{IDENTIFIED}
+表示在声明假设和实验域内具有支持恢复目标物理量的证据；\texttt{EFFECTIVE\_ONLY}
+表示仅支持等效响应模型；\texttt{UNIDENTIFIABLE}
+表示当前观测和激励不足以区分相关参数；\texttt{PRIOR\_ONLY}
+表示未被数据更新、仅来自先验。\texttt{IDENTIFIED}
+也不表示全局唯一或无限精度，必须伴随参数化、诊断及适用范围。
+
+例如，在未知电流比例系数的情况下，同时估计力矩常数与惯量可能出现相互补偿。工作流应记录这种歧义并收缩结论，而不是用优化器返回成功来宣称物理恢复。类似地，时钟偏移与执行器时延若不能独立约束，应保留联合不确定性或仅输出等效时延。
+
+\section{4.
+拟议架构与跨项目边界}\label{ux62dfux8baeux67b6ux6784ux4e0eux8de8ux9879ux76eeux8fb9ux754c}
+
+RoboIDF 的模块均为设计目标，当前不可调用。Context / Run State
+保存机器人能力快照、任务历史、预算、恢复点和产物索引。Skill Registry /
+Tools 定义类型化输入输出、预条件、中止语义及失败码。Orchestrator
+据此提出任务依赖与实验候选。Robot Interface 负责把设备 SDK
+转换为显式能力合同。Safety / Executor
+在独立通道中校验授权和约束。Identification Backend API
+对接成熟求解器，Evaluators / Artifact Registry
+则组织质量诊断、验证及来源追溯。
+
+机器人描述拟采用组件与装配图：Base、Manipulator、End
+Effector、Body、Sensors
+组成节点，安装关系组成带版本的边。每条边包含父子坐标系、变换、来源、校准日期及可信状态。未知变换必须标记为未知，不允许默认单位变换使模型表面可加载。参考平台为固定桌面
+Tianji 双机械臂与 Wuji Hand
+2；具体型号、手数量、固件、关节映射和安装关系仍待核对。
+
+HardwareAdapter
+拟描述``能够读写什么以及如何停止''；IdentificationProfile
+拟描述``为辨识何种对象需要怎样的观测与实验''；Safety Profile
+拟描述``谁可以批准什么范围内的运动以及触发停止的条件''。三者互相引用版本而不混为设备专用脚本。对于不具备某传感通道的设备，能力查询应返回不支持，不能合成看似有效的零值通道。
+
+拟议工具结果统一含
+\texttt{run\_id}、\texttt{operation\_id}、合同版本、状态、时间信息、产物引用和失败原因。数据包另含单位、关节顺序、控制模式、饱和与丢包标志。模型包保存原始模型摘要、参数补丁、训练数据摘要、后端配置、验证报告及声明等级。摘要提供内容一致性证据，但不替代对采集真实性的审查。
+
+跨项目职责维持既有项目群总览：RoboIDF-Bench
+拟提供独立验收和留出测试；RoboIDF-Ecosystem 拟提供
+Adapter、机器人描述、Profile 和资产扩展。核心合同由 RoboIDF
+维护，其他项目消费带版本合同。本文中的字段和状态是待评审草案，不是已发布
+Schema，也不改变现有里程碑。核心不能依赖特定厂商插件，Bench
+不能依赖智能体自评决定是否成功。
+
+\section{5.
+运行状态、安全合同与恢复}\label{ux8fd0ux884cux72b6ux6001ux5b89ux5168ux5408ux540cux4e0eux6062ux590d}
+
+拟议状态链为 CREATED → INSPECTED → PLANNED → PRECHECKED → AUTHORIZED →
+EXECUTING → COLLECTED → FITTED → DIAGNOSED。诊断后允许回到
+\texttt{PLANNED} 开始新实验，或进入 VALIDATION\_READY → VALIDATED →
+REPORTED。实际存储可以按阶段分解，但必须区分阶段开始、已完成和失败。\texttt{VALIDATED}
+只表示封存评测已执行，报告还须区分通过、未通过和无法判定；\texttt{REPORTED}
+也不等于成功辨识。非运行终态包括
+\texttt{REJECTED}、\texttt{ABORTED}、\texttt{FAILED}
+和预算耗尽，退出原因需要保留。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+阶段边界
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+拟议守卫条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+失败处理
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+检查到规划 & 能力和语义完整度满足 Profile 最小需求 &
+降级任务或报告缺失信息 \\
+预检查到授权 & 轨迹范围、碰撞假设、时钟与停止机制检查通过 &
+拒绝执行，保留检查证据 \\
+授权到执行 & 授权绑定当前计划、设备、预算、有效期与版本 &
+拒绝过期或不匹配授权 \\
+执行到采集完成 & 收到执行器终态和完整性记录 &
+中止、标记部分数据并隔离 \\
+诊断到独立验证 & 候选冻结、验证协议和测试访问权限确定 &
+返回诊断或证据不足终止 \\
+\end{longtable}
+}
+
+独立安全通道应限制位置、速度、加速度、力矩或电流等设备可支持量，处理通信超时、看门狗、急停和人工撤销。具体阈值必须来自设备与场景评估，本文不提供可直接用于真机的通用数值。智能体不能修改自身授权边界，不能绕过执行器直接调用低层
+SDK，也不能凭自然语言``已安全''放行。安装环境与阅读文档均不构成运动授权。
+
+持久化采用事件与检查点相互引用的设计。拟合等纯计算阶段可以在输入摘要一致时复用结果；真机动作不能因为调用超时而直接重放。若执行请求已发出而回执丢失，恢复流程首先查询执行器状态并使设备进入经过确认的安全状态；在无法确定动作是否发生时标记为状态不明，等待人工介入。幂等标识应由执行器识别并拒绝重复动作，而不只在智能体内存中去重。
+
+这些安排是约束目标，并非经过形式化验证的安全保证。操作系统、驱动、通信和独立监督器可能存在共同失效；后续需要分别提供故障注入证据与设备场景评估。即使工作流权限隔离正确，也不能据此宣称符合任何机器人安全认证。
+
+\section{6.
+工作流方法与主动实验}\label{ux5de5ux4f5cux6d41ux65b9ux6cd5ux4e0eux4e3bux52a8ux5b9eux9a8c}
+
+候选实验选择首先满足安全与能力可行性，其次比较预期信息收益、设备成本和剩余预算。对于具备灵敏度信息的后端，可以使用候选参数局部灵敏度的条件性或信息矩阵代理指标；对于不提供此类信息的后端，可使用预注册的覆盖度策略。信息代理不等于真实后验信息增益，二者必须在报告中区分。第一版本宜从有限、可解释的激励族开始，而不是让智能体任意生成控制代码。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{输入：任务 T，已有数据 D0，冻结的验证协议 V}
+\NormalTok{创建运行标识，记录合同、后端和设备版本}
+\NormalTok{检查设备能力、观测语义、标定和时钟域}
+\NormalTok{若最小需求不满足：输出缺失证据与可支持的降级结论；结束}
+\NormalTok{Dfit ← 经质量检查的 D0；剩余预算 ← B}
+\NormalTok{循环：}
+\NormalTok{    若 Dfit 足以拟合：}
+\NormalTok{        candidate ← 后端拟合(Dfit，参数边界，固定配置)}
+\NormalTok{        diagnosis ← 开发集诊断(candidate，数据质量，可辨识性)}
+\NormalTok{        记录参数级声明、失败和不确定性}
+\NormalTok{        若达到预注册停止规则：退出循环}
+\NormalTok{    若预算不足或不存在可行实验：记录终止原因；退出循环}
+\NormalTok{    proposals ← 从 Profile 的允许实验族提出候选}
+\NormalTok{    plan ← 在能力和安全可行集合中按固定策略选择候选}
+\NormalTok{    运行独立预检查；获取绑定 plan 的有效授权}
+\NormalTok{    若检查或授权失败：记录拒绝；按协议结束或重新规划}
+\NormalTok{    receipt, data ← 独立执行器执行一次(plan，operation\_id)}
+\NormalTok{    若执行状态不明：停止自动流程，要求状态核对；结束}
+\NormalTok{    更新预算；保存原始数据和质量报告}
+\NormalTok{    仅将通过质量规则的数据加入 Dfit；保留被拒数据及原因}
+\NormalTok{冻结 candidate 和全部开发决策}
+\NormalTok{由独立评测方按 V 评估封存测试集一次}
+\NormalTok{输出模型补丁、证据包、声明等级、失败与适用范围}
+\end{Highlighting}
+\end{Shaded}
+
+停止规则拟同时考虑开发集预测误差、参数稳定性、诊断充分性和预算，而非仅取优化器停止码。若预测目标达到而物理恢复证据不足，可以交付标为
+\texttt{EFFECTIVE\_ONLY}
+的模型。若完全没有候选模型，则报告失败而非制造默认模型。封存测试失败后不得继续针对同一测试集调参并仍宣称独立结果；后续开发应建立新版本及新的独立测试安排。
+
+\section{7.
+实验设计与可证伪假设}\label{ux5b9eux9a8cux8bbeux8ba1ux4e0eux53efux8bc1ux4f2aux5047ux8bbe}
+
+所有实验均未执行。H1：在相同后端和预算下，显式语义合同可以降低由单位、时钟或控制模式错误导致的虚假成功率。H2：在相同可行激励族下，主动选择策略可以减少达到预定开发质量所需的实验次数。H3：持久状态和执行器去重可以降低中断恢复中的重复动作请求及错误数据复用。H4：参数级声明能够降低将等效拟合误报为物理恢复的频率。每项假设都允许得到无收益或负结果。
+
+实验按三个层级推进。第一层为合成机器人，使用已知真值但向智能体隐藏的参数，分别构造可辨识、弱激励、内部控制器未知及传感器缺失任务。第二层为已有真实离线数据，只评估拟合与诊断，不声称验证在线执行安全。第三层在设备合同、授权和停止机制完成后开展受控真机试验；该层目前不具备启动条件。跨仿真器验证作为后续扩展，不从
+MJCF/USD 加载成功推断动态一致性。
+
+主要基线为相同后端的固定实验脚本、无主动选择的智能体流程，以及具备相同信息和预算的专家设计流程。专家时间需记录，不能作为免费资源。消融包括移除语义检查、移除信息驱动选择和移除持久恢复；涉及危险权限的消融只能在
+Mock 或离线故障注入中完成，不能通过关闭真机安全防护获取比较结果。
+
+数据按完整实验轨迹及采集会话分组划分为拟合、开发诊断和封存测试；不能随机拆散相邻时间点制造近重复样本泄漏。主动新增数据只进入开发侧。固定实验种子、初始参数、噪声条件、预算、智能体模型版本、提示模板和工具版本，并记录服务版本不可固定时的局限。候选方法共享可比任务和种子，报告配对差异。具体任务数量、重复次数和通过阈值需在看最终测试结果前确定；正式协议应通过独立试运行估计方差并进行精度或功效规划。
+
+预测误差以每通道物理单位 RMSE
+和按预注册尺度归一化的误差报告；不能按当前方法自身测试表现选择归一化常数。合成任务的参数恢复误差仅对可辨识目标或已定义参数等价类计算，不对零真值直接使用相对误差。另报告实验次数、采集时长、工具与模型调用成本、人工干预、数据拒绝率、故障恢复成功率和虚假成功率。中止与预算耗尽纳入全部任务分母，不能仅统计成功运行。置信区间应在任务或独立会话层面构造，避免把高频采样点误当独立重复。
+
+\section{8.
+结果记录模板：尚未采集}\label{ux7ed3ux679cux8bb0ux5f55ux6a21ux677fux5c1aux672aux91c7ux96c6}
+
+表中破折号表示没有测量值，既不是零也不是未披露的实验结果。不得用该模板生成结论图或胜出声明。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1364}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+任务数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+留出预测误差及区间
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+参数恢复误差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+达标实验次数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+虚假成功率
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+人工分钟数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+固定脚本＋相同后端 & --- & --- & --- & --- & --- & --- \\
+智能体＋固定实验选择 & --- & --- & --- & --- & --- & --- \\
+完整拟议流程 & --- & --- & --- & --- & --- & --- \\
+专家流程 & --- & --- & --- & --- & --- & --- \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+故障情形
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+注入次数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+检出率
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+安全终止记录
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+重复执行次数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+恢复正确率
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+单位或关节顺序错误 & --- & --- & --- & --- & --- \\
+时钟偏移或丢包 & --- & --- & --- & --- & --- \\
+执行回执丢失 & --- & --- & --- & --- & --- \\
+授权过期或设备版本变化 & --- & --- & --- & --- & --- \\
+\end{longtable}
+}
+
+结果分析应先回答合同错误能否被识别，再讨论预测与效率；任何总体平均收益都需检查是否掩盖不可辨识任务上的过度声明。负结果可能说明合同成本超过收益、后端诊断不足，或信息代理与真实实验收益不一致。这些均属于需要报告的发现。
+
+\section{9.
+局限与有效性威胁}\label{ux5c40ux9650ux4e0eux6709ux6548ux6027ux5a01ux80c1}
+
+当前最直接的局限是尚无实现和实证，本文不能回答可用性、运行开销、精度或安全效果。接口草案可能在首次后端适配时发生变化，通用合同也可能不足以表达接触、柔性传动和混合控制。拟议参考平台不能代表移动机器人、医疗机器人或人体接触场景。语言模型版本变化影响复现，专家基线也可能受人员经验影响。
+
+即使合成数据中参数恢复良好，仿真模型同源性仍可能高估真实设备表现。测试集中应包含与拟合模型不同的未建模效应，但差异强度需明确记录。可辨识性诊断常依赖局部线性化，不能直接推出全局唯一性。有限故障注入只能覆盖已设计情形，零事故记录也不能证明不存在危险。
+
+\section{10.
+伦理、资源与发布责任}\label{ux4f26ux7406ux8d44ux6e90ux4e0eux53d1ux5e03ux8d23ux4efb}
+
+机器人实验可能造成设备损坏或人员伤害，因此本文的协议不授权任何实际运动。未来试验应由设备负责人确认操作区域、停止机制和人员安排，并保留撤销授权的独立途径。报告应包含失败与人工救援，不以提升自动化成功率为由隐藏干预。
+
+数据与日志可能包含设备标识、操作者信息和专有结构参数。发布时应获得相应许可并进行最小化处理；凭据、未经许可的原始数据和厂商资产不进入仓库。社区适配不能把未经核实的标定或固件兼容性写成保证。当前项目尚未选择许可证，公开可见不等于授予再分发许可；论文及代码的正式发布许可需要单独明确。
+
+\section{11. 结论与下一步}\label{ux7ed3ux8bbaux4e0eux4e0bux4e00ux6b65}
+
+本文给出 RoboIDF
+的工作流设计与实验协议，强调把能力语义、执行授权、辨识诊断和独立验证纳入同一条可审计证据链。现阶段交付的是可评审的设计文本，尚不能得出系统有效或优于基线的结论。下一步应先完成
+M0 最小合同和评测冻结，再实现 Mock
+状态机、选定一个后端并验证离线闭环，最后在独立授权下开展硬件试验。后续稿件必须以可定位的实现版本和真实结果替换本文假设，保留不成立的假设及其原因。
+
+参考文献
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-mujoco_sysid}
+Google DeepMind, MuJoCo project. 不详. \emph{System Identification
+Toolbox}. Official repository documentation.
+\url{https://github.com/google-deepmind/mujoco/blob/main/python/mujoco/sysid/README.md}.
+
+\bibitem[\citeproctext]{ref-mujoco_modeling}
+MuJoCo project. 不详. \emph{Modeling}. Official MuJoCo documentation.
+\url{https://mujoco.readthedocs.io/en/stable/modeling.html}.
+
+\bibitem[\citeproctext]{ref-ros2control_hardware}
+{ros-controls project}. 不详. \emph{Hardware Components}. Official
+ros2\_control Rolling documentation.
+\url{https://control.ros.org/rolling/doc/ros2_control/hardware_interface/doc/hardware_components_userdoc.html}.
+
+\bibitem[\citeproctext]{ref-yao2022react}
+Yao, Shunyu, Jeffrey Zhao, Dian Yu, 等. 2022年. \emph{ReAct: Synergizing
+Reasoning and Acting in Language Models}.
+\url{https://arxiv.org/abs/2210.03629v3}.
+
+\end{CSLReferences}
+
+\end{document}

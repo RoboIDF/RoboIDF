@@ -78,3 +78,9 @@ pixi run --locked python --version
 当前未选择项目许可证；公开可见不代表已授予开源再分发许可。
 
 2026-11-01 独立仓库验证：`pixi install` 成功，`pixi run --locked info` 与 README 一致；Python 解释器位于本仓库 `.pixi/envs/default`，仓库内文档链接检查通过。
+
+## LaTeX 科研写作环境
+
+见 [写作与编译说明](paper/README.md)。使用 `pixi run --locked paper-build` 生成 LaTeX、PDF 与 Overleaf 导入包；使用 `pixi run --locked paper-check` 检查引用和输出。
+
+2026-11-01：本地 LaTeX 编译与 PDF 检查通过；已检查全部页面排版。Overleaf 项目链接已收到，导入与同步尚未完成，具体状态见写作说明。

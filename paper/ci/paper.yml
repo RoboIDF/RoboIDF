@@ -1,0 +1,27 @@
+name: Compile paper
+on:
+  push:
+    paths: ['paper/**', 'scripts/**', 'pixi.toml', 'pixi.lock', '.github/workflows/paper.yml']
+  pull_request:
+    paths: ['paper/**', 'scripts/**', 'pixi.toml', 'pixi.lock', '.github/workflows/paper.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: prefix-dev/setup-pixi@ad1da6449d9e506fd127fd67ab2d054a769f6a94
+        with:
+          pixi-version: v0.76.0
+          locked: true
+      - run: pixi run --locked paper-build
+      - run: pixi run --locked paper-check
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper
+          path: |
+            paper/main.pdf
+            paper/main.tex
+            paper/overleaf.zip

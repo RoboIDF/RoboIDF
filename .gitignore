@@ -13,3 +13,10 @@ dist/
 # 实验与本地资产按发布协议单独管理
 **/runs/
 **/data/raw/
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

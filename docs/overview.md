@@ -63,3 +63,7 @@ Bench 不依赖 Agent 的自评结论判定成功；Core 不依赖某一个具�
 - [社区网站](https://roboidf-community.agile-auk-4941.chatgpt.site)：项目介绍、规划适配目录、证据等级和 GitHub 协作入口。
 
 论文是待实证的设计/协议稿，未包含实际性能结果；网站展示规划适配，不授予设备验证等级。
+
+## 写作工具链（2026-11-01）
+
+Core 与 Bench 统一通过各仓库 Pixi 的 `paper-build` / `paper-check` 生成并检查 LaTeX/PDF，活动源为 `paper/manuscript.md`。这是文稿工具链，不构成辨识实现或实验结果。Overleaf 状态以各仓库 `paper/README.md` 为准。

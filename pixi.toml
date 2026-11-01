@@ -8,6 +8,14 @@ requires-pixi = ">=0.76.0"
 
 [dependencies]
 python = "3.12.*"
+pandoc = ">=3.13,<4"
+tectonic = ">=0.17.0,<0.18"
+pymupdf = ">=1.24.1,<2"
 
 [tasks]
 info = "python -c \"from pathlib import Path; print(Path('README.md').read_text())\""
+
+[tasks.paper-build]
+cmd = "python scripts/build_paper.py"
+[tasks.paper-check]
+cmd = "python scripts/check_paper.py"
