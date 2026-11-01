@@ -84,3 +84,5 @@ pixi run --locked python --version
 见 [写作与编译说明](paper/README.md)。使用 `pixi run --locked paper-build` 生成 LaTeX、PDF 与 Overleaf 导入包；使用 `pixi run --locked paper-check` 检查引用和输出。
 
 2026-11-01：本地 LaTeX 编译与 PDF 检查通过；已检查全部页面排版。Overleaf 项目链接已收到，导入与同步尚未完成，具体状态见写作说明。
+
+GitHub Actions 自动编译已启用，2026-11-01 首次运行通过：[验证记录](https://github.com/RoboIDF/RoboIDF/actions/runs/41294469162)。论文、脚本或环境变更会自动编译、检查并上传产物。Overleaf 仍待有效 Git 认证。

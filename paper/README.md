@@ -32,4 +32,6 @@ pixi run --locked paper-check
 
 ## GitHub 自动编译
 
-配置位于 `.github/workflows/paper.yml`，在论文、脚本或环境文件变更时编译并检查，保留 PDF、LaTeX 与 Overleaf ZIP 产物；也可手动触发。目前正在完成 workflow 授权，尚未推送并验证远程执行。
+配置位于 `.github/workflows/paper.yml`，在论文、脚本或环境文件变更时编译并检查，保留 PDF、LaTeX 与 Overleaf ZIP 产物；也可手动触发。2026-11-01：workflow 授权已完成，首次远程编译、检查与产物上传全部成功：[运行记录](https://github.com/RoboIDF/RoboIDF/actions/runs/41294469162)。
+
+Overleaf 后续尝试：浏览器控制仍超时；用户在本机尝试 Git 认证，服务器返回 Authentication failed。源码尚未上传，需有效的 Git 令牌重新认证。
