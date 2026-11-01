@@ -55,3 +55,11 @@ Bench 不依赖 Agent 的自评结论判定成功；Core 不依赖某一个具�
 三个项目分别独立维护 Pixi 清单与锁文件，统一使用 Pixi。跨项目合同和里程碑变更时同步本文和各仓库 README；本地 IDF 总览存在时也同步更新。
 
 当前尚未选择项目许可证。
+
+## 研究初稿与社区入口（2026-11-01）
+
+- [RoboIDF 设计与实验协议初稿](../papers/roboidf-draft.md)。
+- [RoboIDF-Bench 评测协议初稿](https://github.com/RoboIDF/RoboIDF-Bench/blob/main/papers/roboidf-bench-draft.md)。
+- [社区网站](https://roboidf-community.agile-auk-4941.chatgpt.site)：项目介绍、规划适配目录、证据等级和 GitHub 协作入口。
+
+论文是待实证的设计/协议稿，未包含实际性能结果；网站展示规划适配，不授予设备验证等级。

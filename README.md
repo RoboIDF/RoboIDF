@@ -4,6 +4,8 @@
 
 [项目群总览](https://github.com/RoboIDF/RoboIDF/blob/main/docs/overview.md) · [评测项目](https://github.com/RoboIDF/RoboIDF-Bench) · [社区项目](https://github.com/RoboIDF/RoboIDF-Ecosystem)
 
+[论文草稿入口](papers/README.md)：v0.1 设计与实验协议初稿（2026-11-01），包含工作流、安全合同、评测计划及已核对参考资料；尚无实现或实验结果，不构成功能验证。
+
 ## 定位与边界
 
 Open-source Agent Harness for Robot System Identification。
