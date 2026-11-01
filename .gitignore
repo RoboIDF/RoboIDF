@@ -1,0 +1,15 @@
+.pixi/
+**/.pixi/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+.env.*
+!.env.example
+*.egg-info/
+build/
+dist/
+# 实验与本地资产按发布协议单独管理
+**/runs/
+**/data/raw/
