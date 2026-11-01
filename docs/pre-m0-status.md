@@ -8,7 +8,7 @@
 
 [项目群总览](https://github.com/RoboIDF/RoboIDF/blob/main/docs/overview.md) · [评测项目](https://github.com/RoboIDF/RoboIDF-Bench) · [社区项目](https://github.com/RoboIDF/RoboIDF-Ecosystem)
 
-[论文草稿入口](papers/README.md)：v0.1 设计与实验协议初稿（2026-11-01），包含工作流、安全合同、评测计划及已核对参考资料；尚无实现或实验结果，不构成功能验证。
+[论文草稿入口](../papers/README.md)：v0.1 设计与实验协议初稿（2026-11-01），包含工作流、安全合同、评测计划及已核对参考资料；尚无实现或实验结果，不构成功能验证。
 
 ## 定位与边界
 
@@ -85,7 +85,7 @@ pixi run --locked python --version
 
 ## LaTeX 科研写作环境
 
-见 [写作与编译说明](paper/README.md)。使用 `pixi run --locked paper-build` 生成 LaTeX、PDF 与 Overleaf 导入包；使用 `pixi run --locked paper-check` 检查引用和输出。
+见 [写作与编译说明](../paper/README.md)。使用 `pixi run --locked paper-build` 生成 LaTeX、PDF 与 Overleaf 导入包；使用 `pixi run --locked paper-check` 检查引用和输出。
 
 2026-11-01：本地 LaTeX 编译与 PDF 检查通过；已检查全部页面排版。Overleaf 项目链接已收到，导入与同步尚未完成，具体状态见写作说明。
 

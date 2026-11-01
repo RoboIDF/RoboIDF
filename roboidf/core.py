@@ -85,8 +85,8 @@ def rollout_rmse(model,data):
         v += data.dt*(u-model.damping*v)/model.mass
         if not math.isfinite(v):
             raise IdentificationError('INVALID_MODEL: divergent rollout')
-        errors.append((v-observed)**2)
-    value=math.sqrt(sum(errors)/len(errors))
+        errors.append(v-observed)
+    value=math.hypot(*errors)/math.sqrt(len(errors))
     if not math.isfinite(value):
         raise IdentificationError('INVALID_MODEL: nonfinite metric')
     return value
@@ -96,10 +96,13 @@ def run_demo(seed=42):
     train=robot.collect(seed=seed,split='train')
     validation=robot.collect(seed=seed+1,split='validation')
     model=fit(train)
+    error=rollout_rmse(model,validation)
+    if error > 1e-8:
+        raise IdentificationError('VALIDATION_FAILED: rollout RMSE exceeds 1e-8 m/s')
     return {'schema_version':'m0.v1','scope':'synthetic-discrete-mass-damper',
             'status':'VALIDATED','events':['CREATED','COLLECTED','FITTED','VALIDATED'],
             'seed':seed,'validation_seed':seed+1,'train_sha256':train.digest(),
             'validation_sha256':validation.digest(),'model':asdict(model),
-            'rollout_rmse_m_s':rollout_rmse(model,validation),
+            'rollout_rmse_m_s':error,
             'parameter_relative_error':{'mass':abs(model.mass/robot.parameters.mass-1),
                                         'damping':abs(model.damping/robot.parameters.damping-1)}}
