@@ -28,8 +28,8 @@ pixi run --locked paper-check
 
 ## Overleaf 状态
 
-用户提供的另一项目：https://www.overleaf.com/project/6ae7075bab7573986e2ab6db 。尚待核对项目名称。浏览器控制连接超时，尚未导入源码、验证在线编译或配置 Git 同步；不得视为已经接入。Git token 不是网页登录凭据，任何 token 不得存入仓库或聊天。
+项目：https://www.overleaf.com/project/6ae7075bab7573986e2ab6db 。用户已确认名称为 RoboIDF。浏览器控制连接超时，尚未导入源码、验证在线编译或配置 Git 同步；不得视为已经接入。Git token 不是网页登录凭据，任何 token 不得存入仓库或聊天。
 
 ## GitHub 自动编译
 
-`ci/paper.yml` 保存 GitHub Actions 配置草案，尚未启用或在 GitHub 执行。当前 GitHub CLI 授权不包含 workflow 权限；完成相应授权后，将配置移至 `.github/workflows/paper.yml` 并提交，再验证远程运行。现有 GitHub 仓库保存全部写作源与本地编译产物。
+配置位于 `.github/workflows/paper.yml`，在论文、脚本或环境文件变更时编译并检查，保留 PDF、LaTeX 与 Overleaf ZIP 产物；也可手动触发。目前正在完成 workflow 授权，尚未推送并验证远程执行。
