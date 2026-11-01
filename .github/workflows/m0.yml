@@ -1,4 +1,4 @@
-name: M0 demo and tests
+name: Software demos and tests
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -12,8 +12,8 @@ jobs:
           pixi-version: v0.76.0
           locked: true
       - run: pixi run --locked test
-      - run: pixi run --locked demo
+      - run: pixi run --locked demo-all
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: m0-report
-          path: artifacts/*.json
+          name: software-reports
+          path: artifacts/**/*.json

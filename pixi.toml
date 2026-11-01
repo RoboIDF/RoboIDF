@@ -11,6 +11,8 @@ python = "3.12.*"
 pandoc = ">=3.13,<4"
 tectonic = ">=0.17.0,<0.18"
 pymupdf = ">=1.24.1,<2"
+scipy = ">=1.18.1,<2"
+numpy = ">=2.5.4,<3"
 
 [tasks]
 info = "python -c \"from pathlib import Path; print(Path('README.md').read_text())\""
@@ -24,3 +26,12 @@ cmd = "python scripts/check_paper.py"
 cmd = "python -m roboidf"
 [tasks.test]
 cmd = "python -m unittest discover -s tests -v"
+
+[tasks.workflow-demo]
+cmd = "python -m roboidf.workflow --output artifacts/workflow"
+[tasks.identify-demo]
+cmd = "python -m roboidf.backends"
+[tasks.validate-demo]
+cmd = "python -m roboidf.validation"
+[tasks.demo-all]
+depends-on = ["demo", "workflow-demo", "identify-demo", "validate-demo"]
